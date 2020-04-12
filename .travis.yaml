@@ -5,3 +5,12 @@ services:
 script:
     - docker build -y yeungcalf/node .
     - docker images yeungcalf/node
+
+before_deplay:
+    - docker login -u yeungcalf -p J450ny3ung
+
+deploy:
+    provider: script
+    script: docker push jason/node
+    on:
+        branch: master
